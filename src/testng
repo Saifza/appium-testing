@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite parallel="false" name="Suite">
+  <test name="Test">
+    <classes>
+      <class name="myappiumtestng.AppiumTestNG3"/>
+      <class name="myappiumtestng.AppiumTestNG"/>
+      <class name="myappiumtestng.AppiumTestNG2"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,0 +1,37 @@
+#Appium Steps
+
+1. Open Appium server GUI
+   set Host 127.0.0.1
+       Port 4723
+        check edit configuation to ensure if JAVA_HOME and ANDROID_HOME are correct.
+  start server
+
+2.Open android studio
+   use device manager to run a device 
+
+3. Open appium inspector  (the purspose of Appium inspector is to inspect element to find id after any app is opened)
+   set Remote Host = localhost
+       Remote Path = /wd/hub
+       Remote Port = 4723
+
+   set desiredcapabilities  
+           deviceName  = value (the device name from the android studio)
+           platfromName = android
+
+   then start session
+the device will be shown, and when an App is opened in the virtual device in android studio it opens in the inspector as well. After that element ids can be found using the appium inspector.
+
+4. to test any App  4 capabilites need to be set.
+         DesiredCapabilities cap = new DesiredCapabilities();
+	cap.setCapability("appium:deviceName","Pixel_XL_API_30");
+        cap.setCapability("platformName", "Android");
+        cap.setCapability("appium:appPackage", "com.google.android.calculator");  
+        cap.setCapability("appium:appActivity", "com.android.calculator2.Calculator");
+        String url= "http://127.0.0.1:4723/wd/hub";
+    	
+        driver = new RemoteWebDriver(new URL(url), cap);  
+
+appPackage and appActivity can be found by running the following command on cmd
+    adb devices 
+    adb shell
+    dumpsys window displays | grep -E 'mCurrentFocus|mFocusedApp'
